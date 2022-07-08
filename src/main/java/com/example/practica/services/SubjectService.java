@@ -13,6 +13,6 @@ public class SubjectService {
         subjectRepo = sr;
     }
     public Subject getSubject(int id){
-        return subjectRepo.findById(id);
+        return subjectRepo.findById(id).get();
     }
 }

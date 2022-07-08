@@ -13,6 +13,6 @@ public class GroupService {
         groupRepo = gr;
     }
     public Group getGroup(int id){
-        return groupRepo.findById(id);
+        return groupRepo.findById(id).get();
     }
 }

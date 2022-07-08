@@ -13,6 +13,6 @@ public class TeacherService {
         teacherRepo = tr;
     }
     public Teacher getTeacher(int id){
-        return teacherRepo.findById(id);
+        return teacherRepo.findById(id).get();
     }
 }

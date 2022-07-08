@@ -11,27 +11,27 @@ public class Schedule {
     @Id
     @GeneratedValue
     private int id;
-    @JsonIgnore
+    //@JsonIgnore
     //@OneToMany(mappedBy = "teacher")
-    @ManyToOne (fetch=FetchType.LAZY,
+    @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_teacher")
     private Teacher teacher;
-    @JsonIgnore
+    //@JsonIgnore
     //@OneToMany(mappedBy = "subject")
-    @ManyToOne (fetch=FetchType.LAZY,
+    @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_subject")
     private Subject subject;
-    @JsonIgnore
+    //@JsonIgnore
     //@OneToMany(mappedBy = "cabinet")
-    @ManyToOne (fetch=FetchType.LAZY,
+    @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_cabinet")
     private Cabinet cabinet;
-    @JsonIgnore
+    //@JsonIgnore
     //@OneToMany(mappedBy = "group")
-    @ManyToOne (fetch=FetchType.LAZY,
+    @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_group")
     private Group group;

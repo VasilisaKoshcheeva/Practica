@@ -13,6 +13,6 @@ public class ScheduleService {
         scheduleRepo = sr;
     }
     public Schedule getSchedule(int id){
-        return scheduleRepo.findById(id);
+        return scheduleRepo.findById(id).get();
     }
 }

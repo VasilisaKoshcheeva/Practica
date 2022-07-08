@@ -13,6 +13,6 @@ public class CabinetService {
         cabinetRepo = cr;
     }
     public Cabinet getCabinet(int id){
-        return cabinetRepo.findById(id);
+        return cabinetRepo.findById(id).get();
     }
 }
