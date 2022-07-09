@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Cabinet {
     @Column
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private String numb;

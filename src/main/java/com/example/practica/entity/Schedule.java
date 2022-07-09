@@ -3,13 +3,15 @@ package com.example.practica.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 @Table(name = "schedule")
 public class Schedule {
     @Column
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //@JsonIgnore
     //@OneToMany(mappedBy = "teacher")
@@ -36,11 +38,11 @@ public class Schedule {
     @JoinColumn(name = "id_group")
     private Group group;
     @Column(name = "time_exam")
-    private String timeExam;
+    private Time timeExam;
     @Column(name = "date_exam")
-    private String dateExam;
+    private Date dateExam;
 
-    public Schedule(int id, Teacher teacher, Subject subject, Cabinet cabinet, Group group, String timeExam, String dateExam) {
+    public Schedule(int id, Teacher teacher, Subject subject, Cabinet cabinet, Group group, Time timeExam, Date dateExam) {
         this.id = id;
         this.teacher = teacher;
         this.subject = subject;
@@ -50,7 +52,7 @@ public class Schedule {
         this.dateExam = dateExam;
     }
 
-    public Schedule(Teacher teacher, Subject subject, Cabinet cabinet, Group group, String timeExam, String dateExam) {
+    public Schedule(Teacher teacher, Subject subject, Cabinet cabinet, Group group, Time timeExam, Date dateExam) {
         this.teacher = teacher;
         this.subject = subject;
         this.cabinet = cabinet;
@@ -103,19 +105,19 @@ public class Schedule {
         this.group = group;
     }
 
-    public String getTimeExam() {
+    public Time getTimeExam() {
         return timeExam;
     }
 
-    public void setTimeExam(String timeExam) {
+    public void setTimeExam(Time timeExam) {
         this.timeExam = timeExam;
     }
 
-    public String getDateExam() {
+    public Date getDateExam() {
         return dateExam;
     }
 
-    public void setDateExam(String dateExam) {
+    public void setDateExam(Date dateExam) {
         this.dateExam = dateExam;
     }
 

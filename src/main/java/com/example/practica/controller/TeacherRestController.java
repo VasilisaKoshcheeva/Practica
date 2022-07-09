@@ -22,6 +22,7 @@ public class TeacherRestController {
 
     @GetMapping("/teacher/{id}")
     public ResponseEntity<Teacher> getTeacher(@PathVariable int id){
+        System.out.println(id);
         return new ResponseEntity(teacherService.getTeacher(id), HttpStatus.OK);
     }
 }

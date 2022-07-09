@@ -1,5 +1,6 @@
 package com.example.practica.services;
 
+import com.example.practica.entity.Cabinet;
 import com.example.practica.entity.Schedule;
 import com.example.practica.repositories.ScheduleRepo;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,8 @@ public class ScheduleService {
     }
     public Schedule getSchedule(int id){
         return scheduleRepo.findById(id).get();
+    }
+    public Schedule addSchedule(Schedule schedule){
+        return scheduleRepo.save(schedule);
     }
 }

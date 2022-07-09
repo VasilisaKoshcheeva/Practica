@@ -22,5 +22,6 @@ public class GroupRestController {
     @GetMapping("/group/{id}")
     public ResponseEntity<Group> getGroup(@PathVariable int id){
         return new ResponseEntity(groupService.getGroup(id), HttpStatus.OK);
+        //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
