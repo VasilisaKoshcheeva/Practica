@@ -27,7 +27,7 @@ public class CabinetRestController {
     }
     @PutMapping("/cabinet")
     public ResponseEntity<Cabinet> updateCabinet(@RequestBody Cabinet cabinet){
-        return  new ResponseEntity(cabinetService.updateCabinet(cabinet), HttpStatus.OK);
+        return new ResponseEntity(cabinetService.updateCabinet(cabinet), HttpStatus.OK);
     }
     @DeleteMapping("/cabinet/{id}")
     public ResponseEntity<Cabinet>  deleteCabinet(@PathVariable int id){

@@ -21,11 +21,15 @@ public class CabinetService {
         return cabinetRepo.save(cabinet);
     }
     public Cabinet updateCabinet(Cabinet cabinet){
-        return cabinetRepo.save(cabinet);
+        if(cabinetRepo.findById(cabinet.getId()).isPresent()){
+            return cabinetRepo.save(cabinet);
+        }
+        else{
+            return null;
+        }
     }
     public boolean deleteCabinet(int id){
         Optional<Cabinet> op = cabinetRepo.findById(id);
-        //Cabinet cabinet = cabinetRepo.findById(id).get();
         if(!op.isPresent()){
             return false;
         }

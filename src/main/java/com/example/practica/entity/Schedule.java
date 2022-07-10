@@ -13,26 +13,18 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "teacher")
     @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_teacher")
     private Teacher teacher;
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "subject")
     @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_subject")
     private Subject subject;
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "cabinet")
     @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_cabinet")
     private Cabinet cabinet;
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "group")
     @ManyToOne (fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     @JoinColumn(name = "id_group")

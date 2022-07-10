@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Teacher {
     @Column
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "lastname")
     private String lastName;

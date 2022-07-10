@@ -1,13 +1,11 @@
 package com.example.practica.controller;
 
+import com.example.practica.entity.Cabinet;
 import com.example.practica.entity.Group;
 import com.example.practica.services.GroupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,6 +20,21 @@ public class GroupRestController {
     @GetMapping("/group/{id}")
     public ResponseEntity<Group> getGroup(@PathVariable int id){
         return new ResponseEntity(groupService.getGroup(id), HttpStatus.OK);
-        //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    @PostMapping("/group")
+    public ResponseEntity<Group> addGroup(@RequestBody Group group){
+        return new ResponseEntity(groupService.addGroup(group), HttpStatus.CREATED);
+    }
+    @PutMapping("/group")
+    public ResponseEntity<Group> updateGroup(@RequestBody Group group){
+        return new ResponseEntity(groupService.updateGroup(group), HttpStatus.OK);
+    }
+    @DeleteMapping("/group/{id}")
+    public ResponseEntity<Group>  deleteGroup(@PathVariable int id){
+        boolean isRemoved = groupService.deleteGroup(id);
+        if (!isRemoved) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

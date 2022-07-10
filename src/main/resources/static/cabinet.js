@@ -1,7 +1,6 @@
 function addCabinet(){
 
     var obj = {};
-   // obj.id = 999;
     obj.numb= document.getElementById("nameCabinet").value;
 
     var json = JSON.stringify(obj);
@@ -11,17 +10,31 @@ function addCabinet(){
     XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
     XHR.send(json);
 }
-function getCabinet(id){
 
+function updateCabinet(){
+    var obj = {};
+    obj.id = document.getElementById("idCabinet").value;
+    obj.numb= document.getElementById("nameCabinet").value;
+    var json = JSON.stringify(obj);
+    console.log(json);
+    var XHR = new XMLHttpRequest();
+    XHR.open("PUT","/cabinet-management/cabinet",true);
+    XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
+    XHR.send(json);
+}
 
+function deleteCabinet(){
+    var id= document.getElementById("idCabinet").value;
+    var XHR = new XMLHttpRequest();
+    XHR.open("DELETE","/cabinet-management/cabinet/"+ id,true);
+    XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
+    XHR.send();
+}
+
+function getCabinet(){
+    var id = document.getElementById("idCabinet").value;
     var XHR = new XMLHttpRequest();
     XHR.open("GET","/cabinet-management/cabinet/"+id,true);
     XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
     XHR.send();
-    if(XHR.status === 200){
-        return XHR.responseText;
-    }
-    else{
-        alert("Ошибка " + XHR.status);
-    }
 }
