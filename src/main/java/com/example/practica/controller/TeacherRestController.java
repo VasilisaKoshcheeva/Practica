@@ -1,5 +1,6 @@
 package com.example.practica.controller;
 
+import com.example.practica.dto.TeacherDTO;
 import com.example.practica.entity.Subject;
 import com.example.practica.entity.Teacher;
 import com.example.practica.services.TeacherService;
@@ -19,20 +20,20 @@ public class TeacherRestController {
     }
 
     @GetMapping("/teacher/{id}")
-    public ResponseEntity<Teacher> getTeacher(@PathVariable int id){
+    public ResponseEntity<TeacherDTO> getTeacher(@PathVariable int id){
         System.out.println(id);
         return new ResponseEntity(teacherService.getTeacher(id), HttpStatus.OK);
     }
     @PostMapping("/teacher")
-    public ResponseEntity<Teacher> addTeacher(@RequestBody Teacher teacher){
-        return new ResponseEntity(teacherService.addTeacher(teacher), HttpStatus.CREATED);
+    public ResponseEntity<TeacherDTO> addTeacher(@RequestBody TeacherDTO teacherDTO){
+        return new ResponseEntity(teacherService.addTeacher(teacherDTO), HttpStatus.CREATED);
     }
     @PutMapping("/teacher")
-    public ResponseEntity<Teacher> updateTeacher(@RequestBody Teacher teacher){
-        return new ResponseEntity(teacherService.updateTeacher(teacher), HttpStatus.OK);
+    public ResponseEntity<TeacherDTO> updateTeacher(@RequestBody TeacherDTO teacherDTO){
+        return new ResponseEntity(teacherService.updateTeacher(teacherDTO), HttpStatus.OK);
     }
     @DeleteMapping("/teacher/{id}")
-    public ResponseEntity<Teacher>  deleteTeacher(@PathVariable int id){
+    public ResponseEntity<TeacherDTO>  deleteTeacher(@PathVariable int id){
         boolean isRemoved = teacherService.deleteTeacher(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

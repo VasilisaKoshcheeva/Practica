@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Schedule</title>
+    <title>Update Schedule</title>
 </head>
 <body>
+<label>Введите id экзамена</label>
+<br>
+<input type="text" id = "idSchedule" name = "idSchedule"></input>
+<br>
 <label>Введите id преподавателя</label>
 <br>
 <input type="text" id = "idTeacher" name = "idTeacher"></input>
@@ -29,7 +33,8 @@
 <br>
 <input type="text" id = "dateExam" name = "dateExam"></input>
 <br>
-<button onclick = "addSchedule()">добавить</button>
+<button onclick = "updateSchedule()">обновить</button>
 <script type = "text/javascript" src = "/schedule.js"> </script>
+
 </body>
 </html>

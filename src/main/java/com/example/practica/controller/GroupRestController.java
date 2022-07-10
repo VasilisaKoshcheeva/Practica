@@ -1,5 +1,6 @@
 package com.example.practica.controller;
 
+import com.example.practica.dto.GroupDTO;
 import com.example.practica.entity.Cabinet;
 import com.example.practica.entity.Group;
 import com.example.practica.services.GroupService;
@@ -22,12 +23,12 @@ public class GroupRestController {
         return new ResponseEntity(groupService.getGroup(id), HttpStatus.OK);
     }
     @PostMapping("/group")
-    public ResponseEntity<Group> addGroup(@RequestBody Group group){
-        return new ResponseEntity(groupService.addGroup(group), HttpStatus.CREATED);
+    public ResponseEntity<Group> addGroup(@RequestBody GroupDTO groupDTO){
+        return new ResponseEntity(groupService.addGroup(groupDTO), HttpStatus.CREATED);
     }
     @PutMapping("/group")
-    public ResponseEntity<Group> updateGroup(@RequestBody Group group){
-        return new ResponseEntity(groupService.updateGroup(group), HttpStatus.OK);
+    public ResponseEntity<Group> updateGroup(@RequestBody GroupDTO groupDTO){
+        return new ResponseEntity(groupService.updateGroup(groupDTO), HttpStatus.OK);
     }
     @DeleteMapping("/group/{id}")
     public ResponseEntity<Group>  deleteGroup(@PathVariable int id){

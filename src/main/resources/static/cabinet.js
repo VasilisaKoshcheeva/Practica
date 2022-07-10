@@ -30,11 +30,3 @@ function deleteCabinet(){
     XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
     XHR.send();
 }
-
-function getCabinet(){
-    var id = document.getElementById("idCabinet").value;
-    var XHR = new XMLHttpRequest();
-    XHR.open("GET","/cabinet-management/cabinet/"+id,true);
-    XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
-    XHR.send();
-}

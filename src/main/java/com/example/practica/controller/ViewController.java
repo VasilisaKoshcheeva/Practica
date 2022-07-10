@@ -1,17 +1,14 @@
-package com.example.practica.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+        package com.example.practica.controller;
+
+        import org.springframework.stereotype.Controller;
+        import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ViewController {
     @GetMapping("/addCabinet")
     public String addCabinet(){
         return "addCabinet";
-    }
-    @GetMapping("/addSchedule")
-    public String addSchedule(){
-        return "addSchedule";
     }
 
     @GetMapping("/updateCabinet")
@@ -23,12 +20,6 @@ public class ViewController {
     public String deleteCabinet(){
         return "deleteCabinet";
     }
-
-    @GetMapping("/getCabinet")
-    public String getCabinet(){
-        return "getCabinet";
-    }
-
 
 
     @GetMapping("/addGroup")
@@ -74,5 +65,17 @@ public class ViewController {
     @GetMapping("/deleteTeacher")
     public String deleteTeacher(){
         return "deleteTeacher";
+    }
+    @GetMapping("/addSchedule")
+    public String addSchedule(){
+        return "addSchedule";
+    }
+    @GetMapping("/updateSchedule")
+    public String updateSchedule(){
+        return "updateSchedule";
+    }
+    @GetMapping("/deleteSchedule")
+    public String deleteSchedule(){
+        return "deleteSchedule";
     }
 }

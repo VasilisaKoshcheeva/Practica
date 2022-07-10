@@ -1,5 +1,6 @@
 package com.example.practica.controller;
 
+import com.example.practica.dto.CabinetDTO;
 import com.example.practica.entity.Cabinet;
 import com.example.practica.services.CabinetService;
 import org.apache.catalina.connector.Response;
@@ -22,12 +23,12 @@ public class CabinetRestController {
         return new ResponseEntity(cabinetService.getCabinet(id), HttpStatus.OK);
     }
     @PostMapping("/cabinet")
-    public ResponseEntity<Cabinet> addCabinet(@RequestBody Cabinet cabinet){
-        return new ResponseEntity(cabinetService.addCabinet(cabinet), HttpStatus.CREATED);
+    public ResponseEntity<Cabinet> addCabinet(@RequestBody CabinetDTO cabinetDTO){
+        return new ResponseEntity(cabinetService.addCabinet(cabinetDTO), HttpStatus.CREATED);
     }
     @PutMapping("/cabinet")
-    public ResponseEntity<Cabinet> updateCabinet(@RequestBody Cabinet cabinet){
-        return new ResponseEntity(cabinetService.updateCabinet(cabinet), HttpStatus.OK);
+    public ResponseEntity<Cabinet> updateCabinet(@RequestBody CabinetDTO cabinetDTO){
+        return new ResponseEntity(cabinetService.updateCabinet(cabinetDTO), HttpStatus.OK);
     }
     @DeleteMapping("/cabinet/{id}")
     public ResponseEntity<Cabinet>  deleteCabinet(@PathVariable int id){

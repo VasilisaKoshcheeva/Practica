@@ -1,6 +1,6 @@
 package com.example.practica.services;
 
-import com.example.practica.entity.Subject;
+import com.example.practica.dto.TeacherDTO;
 import com.example.practica.entity.Teacher;
 import com.example.practica.repositories.TeacherRepo;
 import org.springframework.stereotype.Service;
@@ -20,11 +20,13 @@ public class TeacherService {
     }
 
 
-    public Teacher addTeacher(Teacher teacher){
+    public Teacher addTeacher(TeacherDTO teacherDTO){
+        Teacher teacher = new Teacher(teacherDTO.getLastName(),teacherDTO.getFirstName(),teacherDTO.getMiddleName());
         return teacherRepo.save(teacher);
     }
-    public Teacher updateTeacher(Teacher teacher){
-        if(teacherRepo.findById(teacher.getId()).isPresent()){
+    public Teacher updateTeacher(TeacherDTO teacherDTO){
+        if(teacherRepo.findById(teacherDTO.getId()).isPresent()){
+            Teacher teacher = new Teacher(teacherDTO.getId(), teacherDTO.getLastName(),teacherDTO.getFirstName(),teacherDTO.getMiddleName());
             return teacherRepo.save(teacher);
         }
         else{

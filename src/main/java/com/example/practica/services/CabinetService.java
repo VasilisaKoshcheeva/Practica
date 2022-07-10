@@ -1,5 +1,6 @@
 package com.example.practica.services;
 
+import com.example.practica.dto.CabinetDTO;
 import com.example.practica.entity.Cabinet;
 import com.example.practica.repositories.CabinetRepo;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,12 @@ public class CabinetService {
     public Cabinet getCabinet(int id){
         return cabinetRepo.findById(id).get();
     }
-    public Cabinet addCabinet(Cabinet cabinet){
+    public Cabinet addCabinet(CabinetDTO cabinetDTO){
+        Cabinet cabinet = new Cabinet(cabinetDTO.getNumb());
         return cabinetRepo.save(cabinet);
     }
-    public Cabinet updateCabinet(Cabinet cabinet){
+    public Cabinet updateCabinet(CabinetDTO cabinetDTO){
+        Cabinet cabinet = new Cabinet(cabinetDTO.getId(), cabinetDTO.getNumb());
         if(cabinetRepo.findById(cabinet.getId()).isPresent()){
             return cabinetRepo.save(cabinet);
         }

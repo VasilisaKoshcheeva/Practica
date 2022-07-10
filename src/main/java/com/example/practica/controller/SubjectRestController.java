@@ -1,5 +1,6 @@
 package com.example.practica.controller;
 
+import com.example.practica.dto.SubjectDTO;
 import com.example.practica.entity.Group;
 import com.example.practica.entity.Subject;
 import com.example.practica.services.SubjectService;
@@ -23,12 +24,12 @@ public class SubjectRestController {
     }
 
     @PostMapping("/subject")
-    public ResponseEntity<Subject> addSubject(@RequestBody Subject subject){
-        return new ResponseEntity(subjectService.addSubject(subject), HttpStatus.CREATED);
+    public ResponseEntity<Subject> addSubject(@RequestBody SubjectDTO subjectDTO){
+        return new ResponseEntity(subjectService.addSubject(subjectDTO), HttpStatus.CREATED);
     }
     @PutMapping("/subject")
-    public ResponseEntity<Subject> updateSubject(@RequestBody Subject subject){
-        return new ResponseEntity(subjectService.updateSubject(subject), HttpStatus.OK);
+    public ResponseEntity<Subject> updateSubject(@RequestBody SubjectDTO subjectDTO){
+        return new ResponseEntity(subjectService.updateSubject(subjectDTO), HttpStatus.OK);
     }
     @DeleteMapping("/subject/{id}")
     public ResponseEntity<Subject>  deleteSubject(@PathVariable int id){

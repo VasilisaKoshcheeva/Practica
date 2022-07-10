@@ -1,5 +1,6 @@
 package com.example.practica.services;
 
+import com.example.practica.dto.SubjectDTO;
 import com.example.practica.entity.Group;
 import com.example.practica.entity.Subject;
 import com.example.practica.repositories.SubjectRepo;
@@ -18,11 +19,13 @@ public class SubjectService {
     public Subject getSubject(int id){
         return subjectRepo.findById(id).get();
     }
-    public Subject addSubject(Subject subject){
+    public Subject addSubject(SubjectDTO subjectDTO){
+        Subject subject = new Subject(subjectDTO.getName());
         return subjectRepo.save(subject);
     }
-    public Subject updateSubject(Subject subject){
-        if(subjectRepo.findById(subject.getId()).isPresent()){
+    public Subject updateSubject(SubjectDTO subjectDTO){
+        if(subjectRepo.findById(subjectDTO.getId()).isPresent()){
+            Subject subject = new Subject(subjectDTO.getId(), subjectDTO.getName());
             return subjectRepo.save(subject);
         }
         else{

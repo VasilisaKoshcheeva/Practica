@@ -1,5 +1,6 @@
 package com.example.practica.services;
 
+import com.example.practica.dto.GroupDTO;
 import com.example.practica.entity.Cabinet;
 import com.example.practica.entity.Group;
 import com.example.practica.repositories.GroupRepo;
@@ -18,11 +19,22 @@ public class GroupService {
     public Group getGroup(int id){
         return groupRepo.findById(id).get();
     }
-    public Group addGroup(Group group){
+    public Group addGroup(GroupDTO groupDTO){
+        Group group = new Group(
+                groupDTO.getNumb(),
+                groupDTO.getCourse(),
+                groupDTO.getDirectionCode(),
+                groupDTO.getDirection());
         return groupRepo.save(group);
     }
-    public Group updateGroup(Group group){
-        if(groupRepo.findById(group.getId()).isPresent()){
+    public Group updateGroup(GroupDTO groupDTO){
+        Group group = new Group(
+                groupDTO.getId(),
+                groupDTO.getNumb(),
+                groupDTO.getCourse(),
+                groupDTO.getDirectionCode(),
+                groupDTO.getDirection());
+        if(groupRepo.findById(groupDTO.getId()).isPresent()){
             return groupRepo.save(group);
         }
         else{
