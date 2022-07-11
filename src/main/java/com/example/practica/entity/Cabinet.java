@@ -5,18 +5,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cabinet")
 public class Cabinet {
-    @Column
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private String numb;
 
-    public Cabinet(int id, String number){
+    public Cabinet(int id, String number) {
         numb = number;
         this.id = id;
     }
-    public Cabinet( String number){
+
+    public Cabinet(String number) {
         numb = number;
     }
 

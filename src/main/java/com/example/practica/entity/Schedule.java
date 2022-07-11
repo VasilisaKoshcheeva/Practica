@@ -9,24 +9,20 @@ import java.sql.Time;
 @Entity
 @Table(name = "schedule")
 public class Schedule {
-    @Column
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne (fetch=FetchType.EAGER,
-            cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_teacher")
     private Teacher teacher;
-    @ManyToOne (fetch=FetchType.EAGER,
-            cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_subject")
     private Subject subject;
-    @ManyToOne (fetch=FetchType.EAGER,
-            cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cabinet")
     private Cabinet cabinet;
-    @ManyToOne (fetch=FetchType.EAGER,
-            cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_group")
     private Group group;
     @Column(name = "time_exam")

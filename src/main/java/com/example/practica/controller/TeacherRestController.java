@@ -20,20 +20,23 @@ public class TeacherRestController {
     }
 
     @GetMapping("/teacher/{id}")
-    public ResponseEntity<TeacherDTO> getTeacher(@PathVariable int id){
+    public ResponseEntity<TeacherDTO> getTeacher(@PathVariable int id) {
         System.out.println(id);
         return new ResponseEntity(teacherService.getTeacher(id), HttpStatus.OK);
     }
+
     @PostMapping("/teacher")
-    public ResponseEntity<TeacherDTO> addTeacher(@RequestBody TeacherDTO teacherDTO){
+    public ResponseEntity<TeacherDTO> addTeacher(@RequestBody TeacherDTO teacherDTO) {
         return new ResponseEntity(teacherService.addTeacher(teacherDTO), HttpStatus.CREATED);
     }
+
     @PutMapping("/teacher")
-    public ResponseEntity<TeacherDTO> updateTeacher(@RequestBody TeacherDTO teacherDTO){
+    public ResponseEntity<TeacherDTO> updateTeacher(@RequestBody TeacherDTO teacherDTO) {
         return new ResponseEntity(teacherService.updateTeacher(teacherDTO), HttpStatus.OK);
     }
+
     @DeleteMapping("/teacher/{id}")
-    public ResponseEntity<TeacherDTO>  deleteTeacher(@PathVariable int id){
+    public ResponseEntity<TeacherDTO> deleteTeacher(@PathVariable int id) {
         boolean isRemoved = teacherService.deleteTeacher(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

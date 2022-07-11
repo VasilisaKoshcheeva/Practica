@@ -19,19 +19,22 @@ public class CabinetRestController {
     }
 
     @GetMapping("/cabinet/{id}")
-    public ResponseEntity<Cabinet> getCabinet(@PathVariable int id){
+    public ResponseEntity<CabinetDTO> getCabinet(@PathVariable int id) {
         return new ResponseEntity(cabinetService.getCabinet(id), HttpStatus.OK);
     }
+
     @PostMapping("/cabinet")
-    public ResponseEntity<Cabinet> addCabinet(@RequestBody CabinetDTO cabinetDTO){
+    public ResponseEntity<CabinetDTO> addCabinet(@RequestBody CabinetDTO cabinetDTO) {
         return new ResponseEntity(cabinetService.addCabinet(cabinetDTO), HttpStatus.CREATED);
     }
+
     @PutMapping("/cabinet")
-    public ResponseEntity<Cabinet> updateCabinet(@RequestBody CabinetDTO cabinetDTO){
+    public ResponseEntity<CabinetDTO> updateCabinet(@RequestBody CabinetDTO cabinetDTO) {
         return new ResponseEntity(cabinetService.updateCabinet(cabinetDTO), HttpStatus.OK);
     }
+
     @DeleteMapping("/cabinet/{id}")
-    public ResponseEntity<Cabinet>  deleteCabinet(@PathVariable int id){
+    public ResponseEntity<CabinetDTO> deleteCabinet(@PathVariable int id) {
         boolean isRemoved = cabinetService.deleteCabinet(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

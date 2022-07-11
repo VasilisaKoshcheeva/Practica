@@ -1,9 +1,6 @@
 package com.example.practica.controller;
 
-import com.example.practica.dto.GroupDTO;
 import com.example.practica.dto.ScheduleDTO;
-import com.example.practica.entity.Cabinet;
-import com.example.practica.entity.Group;
 import com.example.practica.entity.Schedule;
 import com.example.practica.services.ScheduleService;
 import org.springframework.http.HttpStatus;
@@ -23,25 +20,27 @@ public class ScheduleRestController {
     }
 
     @GetMapping("/schedule/{id}")
-    public ResponseEntity<Schedule> getSchedule(@PathVariable int id){
+    public ResponseEntity<ScheduleDTO> getSchedule(@PathVariable int id) {
         return new ResponseEntity(scheduleService.getSchedule(id), HttpStatus.OK);
     }
+
     @PostMapping("/schedule")
-    public ResponseEntity<Schedule> addSchedule(@RequestBody ScheduleDTO scheduleDTO) {
-        try{
+    public ResponseEntity<ScheduleDTO> addSchedule(@RequestBody ScheduleDTO scheduleDTO) {
+        try {
             return new ResponseEntity(scheduleService.addSchedule(scheduleDTO), HttpStatus.CREATED);
-        }
-        catch(ParseException e){
-            System.out.println("не парситься");
+        } catch (ParseException e) {
+            System.out.println("Произошла ошибка в преобразовании даты, проверьте формат ГГГГ-ММ-ДД");
         }
         return null;
     }
+
     @PutMapping("/schedule")
-    public ResponseEntity<Schedule> updateSchedule(@RequestBody ScheduleDTO scheduleDTO){
+    public ResponseEntity<ScheduleDTO> updateSchedule(@RequestBody ScheduleDTO scheduleDTO) {
         return new ResponseEntity(scheduleService.updateSchedule(scheduleDTO), HttpStatus.OK);
     }
+
     @DeleteMapping("/schedule/{id}")
-    public ResponseEntity<Schedule>  deleteSchedule(@PathVariable int id){
+    public ResponseEntity<ScheduleDTO> deleteSchedule(@PathVariable int id) {
         boolean isRemoved = scheduleService.deleteSchedule(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

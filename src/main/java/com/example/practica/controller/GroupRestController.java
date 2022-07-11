@@ -19,19 +19,19 @@ public class GroupRestController {
     }
 
     @GetMapping("/group/{id}")
-    public ResponseEntity<Group> getGroup(@PathVariable int id){
+    public ResponseEntity<GroupDTO> getGroup(@PathVariable int id){
         return new ResponseEntity(groupService.getGroup(id), HttpStatus.OK);
     }
     @PostMapping("/group")
-    public ResponseEntity<Group> addGroup(@RequestBody GroupDTO groupDTO){
+    public ResponseEntity<GroupDTO> addGroup(@RequestBody GroupDTO groupDTO){
         return new ResponseEntity(groupService.addGroup(groupDTO), HttpStatus.CREATED);
     }
     @PutMapping("/group")
-    public ResponseEntity<Group> updateGroup(@RequestBody GroupDTO groupDTO){
+    public ResponseEntity<GroupDTO> updateGroup(@RequestBody GroupDTO groupDTO){
         return new ResponseEntity(groupService.updateGroup(groupDTO), HttpStatus.OK);
     }
     @DeleteMapping("/group/{id}")
-    public ResponseEntity<Group>  deleteGroup(@PathVariable int id){
+    public ResponseEntity<GroupDTO>  deleteGroup(@PathVariable int id){
         boolean isRemoved = groupService.deleteGroup(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

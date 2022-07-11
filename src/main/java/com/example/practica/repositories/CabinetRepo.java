@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CabinetRepo extends JpaRepository<Cabinet,Integer> {
+public interface CabinetRepo extends JpaRepository<Cabinet, Integer> {
     //Cabinet findById(int id);
 }

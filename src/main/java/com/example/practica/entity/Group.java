@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "studgroup")
 public class Group {
-    @Column
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,6 +25,7 @@ public class Group {
         this.directionCode = direction_code;
         this.direction = direction;
     }
+
     public Group(String numb, int course, String direction_code, String direction) {
         this.numb = numb;
         this.course = course;

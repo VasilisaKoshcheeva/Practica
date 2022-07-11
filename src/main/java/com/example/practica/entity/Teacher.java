@@ -1,13 +1,12 @@
 package com.example.practica.entity;
 
 
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "teacher")
 public class Teacher {
-    @Column
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

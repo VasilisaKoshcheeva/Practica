@@ -1,8 +1,6 @@
 package com.example.practica.controller;
 
 import com.example.practica.dto.SubjectDTO;
-import com.example.practica.entity.Group;
-import com.example.practica.entity.Subject;
 import com.example.practica.services.SubjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +17,22 @@ public class SubjectRestController {
     }
 
     @GetMapping("/subject/{id}")
-    public ResponseEntity<Subject> getSubject(@PathVariable int id){
+    public ResponseEntity<SubjectDTO> getSubject(@PathVariable int id) {
         return new ResponseEntity(subjectService.getSubject(id), HttpStatus.OK);
     }
 
     @PostMapping("/subject")
-    public ResponseEntity<Subject> addSubject(@RequestBody SubjectDTO subjectDTO){
+    public ResponseEntity<SubjectDTO> addSubject(@RequestBody SubjectDTO subjectDTO) {
         return new ResponseEntity(subjectService.addSubject(subjectDTO), HttpStatus.CREATED);
     }
+
     @PutMapping("/subject")
-    public ResponseEntity<Subject> updateSubject(@RequestBody SubjectDTO subjectDTO){
+    public ResponseEntity<SubjectDTO> updateSubject(@RequestBody SubjectDTO subjectDTO) {
         return new ResponseEntity(subjectService.updateSubject(subjectDTO), HttpStatus.OK);
     }
+
     @DeleteMapping("/subject/{id}")
-    public ResponseEntity<Subject>  deleteSubject(@PathVariable int id){
+    public ResponseEntity<SubjectDTO> deleteSubject(@PathVariable int id) {
         boolean isRemoved = subjectService.deleteSubject(id);
         if (!isRemoved) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

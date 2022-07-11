@@ -11,29 +11,33 @@ import java.util.Optional;
 @Service
 public class CabinetService {
     private final CabinetRepo cabinetRepo;
+    private final ConverterService converterService;
 
-    public CabinetService(CabinetRepo cr){
+
+    public CabinetService(CabinetRepo cr, ConverterService converterService) {
         cabinetRepo = cr;
+        this.converterService = converterService;
     }
-    public Cabinet getCabinet(int id){
+
+    public Cabinet getCabinet(int id) {
         return cabinetRepo.findById(id).get();
     }
-    public Cabinet addCabinet(CabinetDTO cabinetDTO){
-        Cabinet cabinet = new Cabinet(cabinetDTO.getNumb());
-        return cabinetRepo.save(cabinet);
+
+    public Cabinet addCabinet(CabinetDTO cabinetDTO) {
+        return cabinetRepo.save(converterService.convertCabinetDTO(cabinetDTO));
     }
-    public Cabinet updateCabinet(CabinetDTO cabinetDTO){
-        Cabinet cabinet = new Cabinet(cabinetDTO.getId(), cabinetDTO.getNumb());
-        if(cabinetRepo.findById(cabinet.getId()).isPresent()){
-            return cabinetRepo.save(cabinet);
-        }
-        else{
+
+    public Cabinet updateCabinet(CabinetDTO cabinetDTO) {
+        if (cabinetRepo.findById(cabinetDTO.getId()).isPresent()) {
+            return cabinetRepo.save(converterService.convertCabinetDTOWithId(cabinetDTO));
+        } else {
             return null;
         }
     }
-    public boolean deleteCabinet(int id){
+
+    public boolean deleteCabinet(int id) {
         Optional<Cabinet> op = cabinetRepo.findById(id);
-        if(!op.isPresent()){
+        if (!op.isPresent()) {
             return false;
         }
         cabinetRepo.delete(op.get());
